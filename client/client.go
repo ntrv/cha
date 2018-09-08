@@ -8,12 +8,20 @@ import (
 
 const CHATWORK_API = "https://api.chatwork.com/v2/"
 
+type HTTPClient struct {
+	Get()
+	Post()
+	Put()
+	Delete()
+}
+
 type Client struct {
 	APIKey     string
 	BaseURL    *url.URL
 	Debug      bool
 	HTTPClient *http.Client
 	Logger     *log.Logger
+	HTTPClient
 }
 
 func NewClient(apiKey string) (*Client, error) {
