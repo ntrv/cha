@@ -1,11 +1,11 @@
-package client
+package cha
 
 import (
 	"net/http"
 	"path"
 	"bytes"
 
-	"github.com/ntrv/cha/client/utils"
+	"github.com/ntrv/cha/utils"
 )
 
 // newRequest ... Create *http.Client for Chatwork
