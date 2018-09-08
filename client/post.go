@@ -27,7 +27,7 @@ func (c Client) execute(
 		return []byte(``), err
 	}
 
-	return writeRes(res)
+	return utils.writeRes(res)
 }
 
 func (c Client) Get(

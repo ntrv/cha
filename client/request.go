@@ -34,19 +34,4 @@ func (c Client) newRequest(
 	return req, nil
 }
 
-// writeRes ... Create Response String from http.Response
-func writeRes(res http.Response) ([]byte, error) {
-	switch res.StatusCode {
-	
-	// Throttling
-	case http.StatusTooManyRequests:
-		return []byte(``), utils.parseThrottle(res)
 
-	// No Error
-	case http.StatusOK:
-		return utils.parsebody(res.body)
-	}
-
-	// Error
-	return []byte(``), utils.parseError(res.Body)
-}
