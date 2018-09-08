@@ -24,7 +24,7 @@ func NewClient(apiKey string) (*Client, error) {
 	}
 
 	return &Client{
-		APIKey:     "",
+		APIKey:     apiKey,
 		Debug:      false,
 		BaseURL:    baseUrl,
 		HTTPClient: http.DefaultClient,
