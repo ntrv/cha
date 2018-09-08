@@ -1,9 +1,9 @@
 package cha
 
 import (
+	"bytes"
 	"net/http"
 	"path"
-	"bytes"
 
 	"github.com/ntrv/cha/utils"
 )
@@ -12,7 +12,7 @@ import (
 func (c Client) newRequest(
 	method, spath string,
 	params map[string]string,
-) (*http.Request, err error) {
+) (req *http.Request, err error) {
 
 	// Assemble URL from path
 	uri := c.BaseURL
@@ -33,5 +33,3 @@ func (c Client) newRequest(
 
 	return req, nil
 }
-
-
