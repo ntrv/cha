@@ -19,4 +19,3 @@ func (c Client) MyStatusContext(ctx context.Context) (status cw.Status, err erro
 func (c Client) MyStatus() (status cw.Status, err error) {
 	return c.MyStatusContext(context.Background())
 }
-
