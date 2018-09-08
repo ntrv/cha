@@ -12,7 +12,7 @@ func (c Client) MeContext(ctx context.Context) (me cw.Me, err error) {
 	if err != nil {
 		return
 	}
-	err := json.Unmarshal(res, &me)
+	err = json.Unmarshal(res, &me)
 	return
 }
 

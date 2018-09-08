@@ -2,8 +2,8 @@ package utils
 
 import "net/http"
 
-// writeRes ... Create Response String from http.Response
-func writeRes(res http.Response) ([]byte, error) {
+// WriteRes ... Create Response String from http.Response
+func WriteRes(res *http.Response) ([]byte, error) {
 	switch res.StatusCode {
 
 	// Throttling
@@ -12,7 +12,7 @@ func writeRes(res http.Response) ([]byte, error) {
 
 	// No Error
 	case http.StatusOK:
-		return parsebody(res.body)
+		return parseBody(res.Body)
 	}
 
 	// Error

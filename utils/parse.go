@@ -12,7 +12,7 @@ import (
 )
 
 // parseThrottle ... Show response message for throttling
-func parseThrottle(resp http.Response) error {
+func parseThrottle(resp *http.Response) error {
 	limit, err := rateLimit(resp.Header)
 	if err != nil {
 		return err

@@ -4,6 +4,7 @@ import (
 	"context"
 	"net/http"
 
+	"github.com/ntrv/cha/utils"
 	"golang.org/x/net/context/ctxhttp"
 )
 
@@ -27,7 +28,7 @@ func (c Client) execute(
 		return []byte(``), err
 	}
 
-	return utils.writeRes(res)
+	return utils.WriteRes(res)
 }
 
 func (c Client) get(

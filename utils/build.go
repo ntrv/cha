@@ -5,7 +5,7 @@ import (
 	"strings"
 )
 
-func buildURL(endpoint *url.URL, params map[string]string) *url.URL {
+func BuildURL(endpoint *url.URL, params map[string]string) *url.URL {
 	var query []string
 
 	for k := range params {
@@ -17,7 +17,7 @@ func buildURL(endpoint *url.URL, params map[string]string) *url.URL {
 	return &ep
 }
 
-func buildBody(params map[string]string) url.Values {
+func BuildBody(params map[string]string) url.Values {
 	body := url.Values{}
 	for k := range params {
 		body.Add(k, params[k])
