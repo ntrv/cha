@@ -30,7 +30,7 @@ func (c Client) execute(
 	return utils.writeRes(res)
 }
 
-func (c Client) Get(
+func (c Client) get(
 	ctx context.Context,
 	spath string,
 	params map[string]string,
@@ -38,7 +38,7 @@ func (c Client) Get(
 	return c.execute(ctx, http.MethodGet, spath, params)
 }
 
-func (c Client) Post(
+func (c Client) post(
 	ctx context.Context,
 	spath string,
 	params map[string]string,
@@ -46,7 +46,7 @@ func (c Client) Post(
 	return c.execute(ctx, http.MethodPost, spath, params)
 }
 
-func (c Client) Put(
+func (c Client) put(
 	ctx context.Context,
 	spath string,
 	params map[string]string,
@@ -54,7 +54,7 @@ func (c Client) Put(
 	return c.execute(ctx, http.MethodPut, spath, params)
 }
 
-func (c Client) Delete(
+func (c Client) delete(
 	ctx context.Context,
 	spath string,
 	params map[string]string,
