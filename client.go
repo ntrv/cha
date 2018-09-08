@@ -2,6 +2,7 @@ package cha
 
 import (
 	"log"
+	"os"
 	"net/http"
 	"net/url"
 )
@@ -27,6 +28,7 @@ func NewClient(apiKey string) (*Client, error) {
 		Debug:      false,
 		BaseURL:    baseUrl,
 		HTTPClient: http.DefaultClient,
+		Logger: log.New(os.Stderr, "", log.LstdFlags),
 	}, nil
 }
 
