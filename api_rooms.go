@@ -49,7 +49,7 @@ func (c Client) DeleteRoomContext(
 	return c.delete(ctx, fmt.Sprintf("/rooms/%s", roomId), params)
 }
 
-func (c Client) DeleteRoom(roomId string, params map[string]string) {
+func (c Client) DeleteRoom(roomId string, params map[string]string) ([]byte, error) {
 	return c.DeleteRoomContext(context.Background(), roomId, params)
 }
 
@@ -57,7 +57,7 @@ func (c Client) RoomMembersContext(
 	ctx context.Context,
 	roomId string,
 ) (members []cw.Member, err error) {
-	res, err := c.get(ctx, fmt.Sprintf("/rooms/%s/members", roomId), map[string]string)
+	res, err := c.get(ctx, fmt.Sprintf("/rooms/%s/members", roomId), map[string]string{})
 	if err != nil {
 		return
 	}
