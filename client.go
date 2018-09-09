@@ -28,7 +28,7 @@ func NewClient(apiKey string) (*Client, error) {
 		Debug:      false,
 		BaseURL:    baseUrl,
 		HTTPClient: http.DefaultClient,
-		Logger:     log.New(os.Stderr, "", log.LstdFlags),
+		Logger:     log.New(os.DevNull, "", log.LstdFlags),
 	}, nil
 }
 
