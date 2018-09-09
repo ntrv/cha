@@ -22,7 +22,7 @@ type Task struct {
 func (t *Task) UnmarshalJSON(data []byte) error {
 	var task cw.Task
 
-	err = json.Unmarshal(data, &task)
+	err := json.Unmarshal(data, &task)
 	if err != nil {
 		return err
 	}

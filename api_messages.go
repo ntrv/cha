@@ -17,7 +17,7 @@ type Message struct {
 	UpdateTime time.Time  `json:"update_time"`
 }
 
-func (m *Message) UnmarshalJSON(date []byte) error {
+func (m *Message) UnmarshalJSON(data []byte) error {
 	var msg cw.Message
 
 	err := json.Unmarshal(data, &msg)
