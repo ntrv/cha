@@ -35,16 +35,3 @@ func (c Client) MyTasksContext(
 func (c Client) MyTasks(params map[string]string) ([]cw.MyTask, error) {
 	return c.MyTasksContext(context.Background(), params)
 }
-
-func (c Client) ContactsContext(ctx context.Context) (contacts []cw.Contact, err error) {
-	res, err := c.get(ctx, "/contacts", map[string]string{})
-	if err != nil {
-		return
-	}
-	err = json.Unmarshal(res, &contacts)
-	return
-}
-
-func (c Client) Contacts() ([]cw.Contact, error) {
-	return c.ContactsContext(context.Background())
-}
