@@ -4,7 +4,6 @@ import (
 	"context"
 	"net/http"
 
-	"github.com/ntrv/cha/utils"
 	"golang.org/x/net/context/ctxhttp"
 )
 
@@ -28,7 +27,24 @@ func (c Client) execute(
 		return []byte(``), err
 	}
 
-	return utils.WriteRes(res)
+	return writeRes(res)
+}
+
+// WriteRes ... Create Response String from http.Response
+func writeRes(res *http.Response) ([]byte, error) {
+	switch res.StatusCode {
+
+	// Throttling
+	case http.StatusTooManyRequests:
+		return []byte(``), parseThrottle(res)
+
+	// No Error
+	case http.StatusOK:
+		return parseBody(res.Body)
+	}
+
+	// Error
+	return []byte(``), parseError(res.Body)
 }
 
 func (c Client) get(
