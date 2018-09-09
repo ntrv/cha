@@ -10,11 +10,12 @@ import (
 const CHATWORK_API = "https://api.chatwork.com/v2/"
 
 type Client struct {
-	APIKey     string
-	BaseURL    *url.URL
-	Debug      bool
-	HTTPClient *http.Client
-	Logger     *log.Logger
+	APIKey          string
+	BaseURL         *url.URL
+	Debug           bool
+	HTTPClient      *http.Client
+	Logger          *log.Logger
+	latestRateLimit *RateLimit
 }
 
 func NewClient(apiKey string) (*Client, error) {
@@ -24,11 +25,12 @@ func NewClient(apiKey string) (*Client, error) {
 	}
 
 	return &Client{
-		APIKey:     apiKey,
-		Debug:      false,
-		BaseURL:    baseUrl,
-		HTTPClient: http.DefaultClient,
-		Logger:     log.New(ioutil.Discard, "", log.LstdFlags),
+		APIKey:          apiKey,
+		Debug:           false,
+		BaseURL:         baseUrl,
+		HTTPClient:      http.DefaultClient,
+		Logger:          log.New(ioutil.Discard, "", log.LstdFlags),
+		latestRateLimit: nil,
 	}, nil
 }
 

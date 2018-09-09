@@ -27,6 +27,9 @@ func (c Client) execute(
 		return []byte(``), err
 	}
 
+	// Preserve RateLimit
+	c.latestRateLimit = rateLimit(res.Header)
+
 	return writeRes(res)
 }
 

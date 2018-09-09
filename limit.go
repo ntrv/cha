@@ -37,3 +37,10 @@ func rateLimit(header HTTPHeader) (*RateLimit, error) {
 		ResetTime: time.Unix(resetTime, 0),
 	}, nil
 }
+
+func (c Client) RateLimit() *RateLimit {
+	if c.latestRateLimit == nil {
+		c.Me()
+	}
+	return c.latestRateLimit
+}
