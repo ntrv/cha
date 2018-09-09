@@ -4,8 +4,6 @@ import (
 	"bytes"
 	"net/http"
 	"path"
-
-	"github.com/ntrv/cha/utils"
 )
 
 // newRequest ... Create *http.Client for Chatwork
@@ -19,10 +17,10 @@ func (c Client) newRequest(
 	uri.Path = path.Join(uri.Path, spath)
 
 	if method != http.MethodGet {
-		req, err = http.NewRequest(method, uri.String(), bytes.NewBufferString(utils.BuildBody(params).Encode()))
+		req, err = http.NewRequest(method, uri.String(), bytes.NewBufferString(BuildBody(params).Encode()))
 		req.Header.Set("Content-Type", "application/x-www-form-urlencoded")
 	} else {
-		req, err = http.NewRequest(http.MethodGet, utils.BuildURL(uri, params).String(), nil)
+		req, err = http.NewRequest(http.MethodGet, BuildURL(uri, params).String(), nil)
 	}
 	if err != nil {
 		return nil, err
