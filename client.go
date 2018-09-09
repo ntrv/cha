@@ -1,10 +1,10 @@
 package cha
 
 import (
+	"io/ioutil"
 	"log"
 	"net/http"
 	"net/url"
-	"os"
 )
 
 const CHATWORK_API = "https://api.chatwork.com/v2/"
@@ -28,7 +28,7 @@ func NewClient(apiKey string) (*Client, error) {
 		Debug:      false,
 		BaseURL:    baseUrl,
 		HTTPClient: http.DefaultClient,
-		Logger:     log.New(os.DevNull, "", log.LstdFlags),
+		Logger:     log.New(ioutil.Discard, "", log.LstdFlags),
 	}, nil
 }
 
